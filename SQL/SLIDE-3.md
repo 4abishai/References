@@ -1,6 +1,20 @@
 - Constraints can be imposed to the database tables either with the `CREATE` or `ALTER` command.
 - The abbreviation for different constraint types are: pk for`PRIMARY` Key, fk for `FOREIGN` Key, uk for `UNIQUE`, chk or ck for `CHECK` and nn for `NOT NULL` constraint.
 
+### Dealing with Constraints in an existing table
+
+#### Dropping Constraint:
+
+```sql
+ALTER TABLE tablename DROP CONSTRAINT constraintname;
+```
+
+#### Adding Constraint:
+
+```sql
+ALTER TABLE tablename ADD CONSTRAINT constraintname <CONSTRAINT-TYPE>(columns);
+```
+
 #### NOT NULL Constraint
 
 | Format                                                       | Example                                                | Description                                                        |
@@ -15,20 +29,6 @@
 | **Column level**: <br>Columnname datatype(size) UNIQUE         | `username VARCHAR(50) UNIQUE`                            | Ensures that each value in the column is unique.    |
 | Columnname datatype(size) CONSTRAINT constraintname UNIQUE     | `username VARCHAR(50) CONSTRAINT username_unique UNIQUE` | Assigns a specific name to the unique constraint.   |
 | **Table level**: <br>CONSTRAINT constraintname UNIQUE(columns) | `CONSTRAINT user_unique UNIQUE(id,name)`                 | Defines a unique constraint at the **Table level**. |
-
-### Dealing with Unique Constraint in an existing table
-
-#### Dropping Constraint:
-
-```sql
-ALTER TABLE tablename DROP CONSTRAINT constraintname;
-```
-
-#### Adding Constraint:
-
-```sql
-ALTER TABLE tablename ADD CONSTRAINT constraintname <CONSTRAINT-TYPE>(columns);
-```
 
 ## Primary Key Constraint (Entity Integrity Constraint)
 

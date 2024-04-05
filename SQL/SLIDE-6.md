@@ -179,7 +179,7 @@ LEFT JOIN table2 ON table1.column = table2.column;
 ```sql
 SELECT * 
 FROM Employee 
-LEFT OUTER JOIN Department
+LEFT JOIN Department
 ON Employee.deptno= Department.deptno;
 
 -- same as

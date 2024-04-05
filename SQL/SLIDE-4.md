@@ -9,9 +9,9 @@ SELECT FUNCTION FROM table_name;
 | ------------------------ | ------------------------------------------------------------------ | ----------------------------------------------------------------------- |
 | COUNT([DISTINCT] column) | `SELECT COUNT(MGR) FROM EMP; SELECT COUNT(DISTINCT MGR) FROM EMP;` | This function counts the number of rows without considering NULL values |
 | COUNT(*)                 | `SELECT COUNT(*) FROM EMP;`                                        | It counts the number of rows including NULL values.                     |
-| SUM([DISTINCT] column)   | `SUM([DISTINCT] column)`                                           | It finds the sum of all values in a column ignoring the NULL values     |
+| SUM([DISTINCT] column)   | `SELECT SUM(DISTINCT STUD) FROM SCHOOL`                            | It finds the sum of all values in a column ignoring the NULL values     |
 | AVG([DISTINCT] column)   | `SELECT AVG(SAL) FROM EMP;`                                        | It finds the average of all values in a column ignoring the NULL values |
-| MAX([DISTINCT] column)   | `MAX([DISTINCT] column)`                                           | It finds the maximum value in the column ignoring the NULL values       |
+| MAX([DISTINCT] column)   | `SELECT MAX(SAL) FROM EMP;`                                        | It finds the maximum value in the column ignoring the NULL values       |
 | MIN([DISTINCT] column)   | `SELECT MIN(SAL) FROM EMP;`                                        | It finds the minimum value in the column ignoring the NULL values       |
 ### Scalar Functions
 #### Date Functions

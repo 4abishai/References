@@ -144,21 +144,22 @@ WHERE salary > (
     WHERE s1.employee_id = s2.employee_id
 );
 ```
-
-In this query, the subquery `(SELECT AVG(salary) FROM salaries s2 WHERE s1.employee_id = s2.employee_id)` is correlated with the outer query `salaries s1`. For each row in the outer query, the subquery calculates the average salary for that specific employee (`s1.employee_id = s2.employee_id`). Then, the outer query selects only those employees whose salary is greater than this average salary.
+This SQL query retrieves the employee_id, employee_name, and salary of employees whose salary is greater than the average salary of all employees with the same employee_id.
+The subquery `(SELECT AVG(salary) FROM salaries s2 WHERE s1.employee_id = s2.employee_id)` is correlated with the outer query `salaries s1`. For each row in the outer query, the subquery calculates the average salary for that specific employee (`s1.employee_id = s2.employee_id`). Then, the outer query selects only those employees whose salary is greater than this average salary.
 
 #### JOIN
 
 Same result can be achieved using a `JOIN` instead of a correlated subquery.
 
 ```sql
-SELECT e.employee_id, e.employee_name, s.salary
-FROM employees e
-JOIN salaries s ON e.employee_id = s.employee_id
+SELECT s1.employee_id, s1.employee_name, s1.salary
+FROM salaries s1
 JOIN (
-    SELECT AVG(salary) AS avg_salary
+    SELECT employee_id, AVG(salary) AS avg_salary
     FROM salaries
-) AS avg_sal ON s.salary > avg_sal.avg_salary;
+    GROUP BY employee_id
+) s2 ON s1.employee_id = s2.employee_id
+WHERE s1.salary > s2.avg_salary;
 ```
 
 ### UPDATE with Subquery
